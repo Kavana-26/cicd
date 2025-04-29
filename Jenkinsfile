@@ -1,14 +1,15 @@
 pipeline {
     agent any
+    tools {
+        jdk 'jdk-21'  // This MUST match the name you just added
+    }
     stages {
         stage('Build') {
             steps {
-                script {
-                    // Ensure gradlew has execute permissions
-                    sh 'chmod +x gradlew'
-                    sh './gradlew build'
-                }
+                sh 'chmod +x gradlew' 
+                sh './gradlew build'
             }
         }
     }
 }
+
