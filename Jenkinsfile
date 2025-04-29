@@ -1,16 +1,16 @@
 pipeline {
-    agent any
+    agent any  // This will run the pipeline on any available agent
     tools {
-        jdk 'jdk-21'  // Ensure this matches the name configured in Jenkins
-    }
-    environment {
-        JAVA_HOME = jdk-21: 'jdk-21', type: 'JDK'  // Explicitly set JAVA_HOME
+        jdk 'jdk-21'  // This refers to the global tool configuration in Jenkins
     }
     stages {
         stage('Build') {
             steps {
-                sh 'chmod +x gradlew'  // Make sure gradlew is executable
-                sh './gradlew build'   // Run Gradle build
+                script {
+                    // Ensure gradlew is executable and run the Gradle build
+                    sh 'chmod +x gradlew'
+                    sh './gradlew build'  // Run gradle build
+                }
             }
         }
     }
