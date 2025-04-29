@@ -1,10 +1,13 @@
 pipeline {
-    agent any  // Run the pipeline on any available agent (no Docker)
+    environment {
+        JAVA_HOME = '/usr/lib/jvm/java-21-openjdk-amd64'
+        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+    }
     stages {
         stage('Build') {
             steps {
-                sh 'chmod +x gradlew'  // Make sure gradlew is executable
-                sh './gradlew build'   // Run Gradle build
+                sh 'chmod +x gradlew'
+                sh './gradlew build'
             }
         }
     }
