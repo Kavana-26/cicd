@@ -1,7 +1,7 @@
 pipeline {
     agent any  // This will run the pipeline on any available agent
     tools {
-        jdk 'openjdk-21'  // Replace 'openjdk-21' with the JDK name configured in Jenkins
+        jdk 'jdk-21'  // Use the exact name configured in Jenkins (jdk-21)
     }
     stages {
         stage('Build') {
@@ -12,4 +12,3 @@ pipeline {
         }
     }
 }
-
