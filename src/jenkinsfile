@@ -1,18 +1,19 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
                 script {
-                      
-                        sh 'ls -l'  
-                        sh 'chmod +x gradlew'  
-                        sh './gradlew build'  
-                    
+                    // Ensure we are in the correct directory before running the build
+                    dir('Desktop') {
+                        sh 'chmod +x gradlew' // Make gradlew executable
+                        sh './gradlew build'  // Run gradle build
+                    }
                 }
             }
         }
     }
-}  
+}
+
+
 
